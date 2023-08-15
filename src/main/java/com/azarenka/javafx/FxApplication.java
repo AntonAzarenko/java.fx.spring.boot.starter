@@ -1,14 +1,13 @@
 package com.azarenka.javafx;
 
 import com.github.ulisesbocchio.jar.resources.JarResourceLoader;
+
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.ApplicationEvent;
-import org.springframework.context.ConfigurableApplicationContext;
-
-import java.util.Set;
 
 public class FxApplication extends Application {
 
