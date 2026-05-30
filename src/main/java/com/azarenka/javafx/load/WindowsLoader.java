@@ -1,24 +1,25 @@
 package com.azarenka.javafx.load;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class WindowsLoader {
 
-    private ApplicationContext applicationContext;
+    private final List<IFxmlWindow> windows;
 
-    public WindowsLoader(ApplicationContext applicationContext) {
-        this.applicationContext = applicationContext;
+    public WindowsLoader(List<IFxmlWindow> windows) {
+        this.windows = windows;
     }
 
+    @EventListener(ContextRefreshedEvent.class) // вызывается, когда контекст уже поднят
     public void initializeWindows() {
-        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
-        for (String beanName : beanDefinitionNames) {
-            Object bean = applicationContext.getBean(beanName);
-            if (bean instanceof IFxmlWindow) {
-                ((IFxmlWindow) bean).load();
-            }
+        for (IFxmlWindow w : windows) {
+            w.load();
         }
     }
 }

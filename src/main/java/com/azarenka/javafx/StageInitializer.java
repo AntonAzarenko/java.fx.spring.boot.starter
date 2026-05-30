@@ -53,7 +53,7 @@ public class StageInitializer implements ApplicationListener<StageEvent> {
 
     public void setCommonWidget(CommonWidget commonWidget) {
         this.commonWidget = commonWidget;
-        windowsLoader.initializeWindows();
+        //windowsLoader.initializeWindows();
     }
 
     public void setupPropertiesUrl(Resource url) {
