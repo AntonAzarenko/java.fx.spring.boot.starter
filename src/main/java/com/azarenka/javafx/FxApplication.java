@@ -16,7 +16,9 @@ public class FxApplication extends Application {
     @Override
     public void init() {
         applicationContext = new SpringApplicationBuilder(ApplicationStarter.clazz)
-                .resourceLoader(new JarResourceLoader("classes")).run();
+                .resourceLoader(new JarResourceLoader("classes"))
+            .headless(false)
+            .run();
     }
 
     @Override
